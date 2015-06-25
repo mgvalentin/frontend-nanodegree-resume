@@ -13,6 +13,23 @@ var formattedRole = HTMLheaderRole.replace("%data%", varRole);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
+varAud = "audacity";
+varUda = varAud.replace("au", "U");
+$("#header").append(varUda);
 
-//$("#header").append(formattedRole);
+$("#header").append("<BR><BR>");
+
+
+var s = "audacity";
+s = s[1].toUpperCase() + s.slice(2);
+$("#header").append(s);
+
+
+
+var skills = ["awesomeness", "programming", "teaching", "JS"];
+
+$("#main").append(skills[0]);
+$("#main").append("<BR><BR>");
+
+$("#main").append(skills.length);
 
