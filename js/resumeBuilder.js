@@ -3,7 +3,7 @@
 // work contains an array of jobs. Each job object in jobs should contain an employer, title, location, dates worked and description.
 
 var work = {
-    "job" : [
+    "jobs" : [
         {
             "employer" : "Cablevision",
             "title" : "VP",
@@ -48,6 +48,8 @@ var bio = {
      "name" : "Michael Valentin",
      "role" : "VP",
      "welcomeMessage" : "Welcome to my resume", 
+     "skills" : ["management", "csm", "cspo", "pmp", "dev ops"],
+     "biopic" : "images/fry.jpg",
      "contacts" : [
         {
             "mobile" : "212.555.1212",
@@ -57,8 +59,6 @@ var bio = {
             "location" : "New York, NY"    
         }
     ]
-    "skills" : ["management", "csm", "cspo", "pmp", "dev osp"],
-    "biopic" : "images/fry.jpg"
 };
 
 
@@ -91,7 +91,7 @@ var education = {
             "url" : "udacity.com"
         },
         {
-             "title" : "Intro to GIT",
+            "title" : "Intro to GIT",
             "school" : "Udacity",
             "dates" : "2015",
             "url" : "udacity.com"
@@ -99,6 +99,54 @@ var education = {
     ]
 };
 
+
+/*
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+//    var Skill0 = bio.skills[0];
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkill);
+
+    console.log(formattedSkill);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+    $("#skills").append(formattedSkill);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+    $("#skills").append(formattedSkill);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    $("#skills").append(formattedSkill);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+    $("#skills").append(formattedSkill);
+
+};
+*/
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (skillIndex in bio.skills) {
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[skillIndex]);
+        $("#skills").append(formattedSkill);
+    }
+};
+
+if (work.jobs.length > 0) {
+    for (jobIndex in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
+        var formatEMP = HTMLworkEmployer.replace("%data%", work.jobs[jobIndex].employer);
+        var formatTITLE = HTMLworkTitle.replace("%data%", work.jobs[jobIndex].title);
+        var EMP_TITLE = formatEMP + formatTITLE;
+        $(".work-entry:last").append(EMP_TITLE);
+        var formatJOBDATES = HTMLworkDates.replace("%data%", work.jobs[jobIndex].dates);
+        $(".work-entry:last").append(formatJOBDATES);
+        
+        var formatLOCATION = HTMLworkLocation.replace("%data%", work.jobs[jobIndex].location);
+        $(".work-entry:last").append(formatLOCATION);
+        var formatDESC = HTMLworkDescription.replace("%data%", work.jobs[jobIndex].description);
+        $(".work-entry:last").append(formatDESC);
+	}
+};
 
 
 
